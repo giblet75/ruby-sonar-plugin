@@ -96,13 +96,14 @@ public class RubySensorTest {
     Measure measure = new Measure();
     List<InputFile> inputFiles = new ArrayList<InputFile>();
     File aFile = new File(INPUT_SOURCE_FILE);
-    DefaultInputFile difFile = new DefaultInputFile(aFile.getPath());
-    difFile.setFile(aFile);
-
+    DefaultInputFile difFile = new DefaultInputFile("", aFile.getPath());
+      
     inputFiles.add(difFile);
 
     expect(sensorContext.saveMeasure(isA(InputFile.class), isA(Metric.class), isA(Double.class))).andReturn(measure).times(4);
-    expect(sensorContext.saveMeasure(isA(Resource.class), isA(Metric.class), isA(Double.class))).andReturn(measure).times(1);
+
+//    TODO: removed package metric for deprecated package metric, should check reintegration
+//    expect(sensorContext.saveMeasure(isA(Resource.class), isA(Metric.class), isA(Double.class))).andReturn(measure).times(1);
     expect(fs.predicates()).andReturn(filePredicates).times(1);
     expect(filePredicates.hasLanguage(eq("ruby"))).andReturn(filePredicate).times(1);
     expect(fs.inputFiles(isA(FilePredicate.class))).andReturn((Iterable<InputFile>) inputFiles).times(1);

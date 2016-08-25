@@ -1,5 +1,5 @@
 {
-  "RSpec": {
+  "MiniTest": {
     "coverage": {
       "/project/source/subdir/file.rb": [
         1,

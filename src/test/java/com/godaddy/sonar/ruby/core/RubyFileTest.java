@@ -29,7 +29,10 @@ public class RubyFileTest {
 //		fs.add(new DefaultInputFile(file.getPath()).setAbsolutePath(file.getAbsolutePath()).setType(Type.MAIN).setLanguage(Java.KEY));
 		File aSrcDir = new File("/path/to/source");
 //		sourceDirs.add(new DefaultInputFile("/path/to/source"));
-        sourceDirs.add(new DefaultInputFile(aSrcDir.getPath()).setAbsolutePath(file.getParent()));
+        sourceDirs.add(
+        		new DefaultInputFile(
+        				"",
+						aSrcDir.getPath()).setModuleBaseDir(file.getParentFile().toPath()));
 		
 		rubyFile = new RubyFile(file, sourceDirs);
 	}

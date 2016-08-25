@@ -17,22 +17,13 @@ import static org.easymock.EasyMock.eq;
 import org.easymock.IMocksControl;
 import org.junit.Before;
 import org.junit.Test;
-import org.sonar.api.CoreProperties;
 import org.sonar.api.batch.SensorContext;
 import org.sonar.api.batch.fs.FileSystem;
-import org.sonar.api.batch.fs.InputFile;
 import org.sonar.api.config.Settings;
-import org.sonar.api.measures.Measure;
-import org.sonar.api.measures.Metric;
 import org.sonar.api.resources.Project;
-import org.sonar.api.resources.Resource;
-import org.sonar.api.scan.filesystem.FileQuery;
-import org.sonar.api.scan.filesystem.ModuleFileSystem;
 import org.sonar.api.scan.filesystem.PathResolver;
 
-import com.godaddy.sonar.ruby.RubySensor;
 import com.godaddy.sonar.ruby.core.LanguageRuby;
-import com.godaddy.sonar.ruby.core.RubyFile;
 
 
 public class MetricfuComplexitySensorTest 
@@ -64,7 +55,7 @@ public class MetricfuComplexitySensorTest
 
 		project = new Project("test project");	
 		project.setLanguage(LanguageRuby.INSTANCE);		
-		project.setConfiguration(config);
+		// project.setConfiguration(config);
 		
 	}
 	
@@ -91,7 +82,7 @@ public class MetricfuComplexitySensorTest
         expect(pathResolver.relativeFile(isA(File.class),isA(String.class))).andReturn(new File("foo"));
 		mocksControl.replay();
 
-		metricfuComplexitySensor.analyse(project, sensorContext);
+		metricfuComplexitySensor.execute(sensorContext);
 		mocksControl.verify();
 	}
 }

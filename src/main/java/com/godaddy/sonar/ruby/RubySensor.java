@@ -80,10 +80,12 @@ public class RubySensor implements Sensor
         IOUtils.closeQuietly(reader);
       }
     }
-    for (RubyPackage pack : packageList)
-    {
-      sensorContext.saveMeasure(pack, CoreMetrics.PACKAGES, 1.0);
-    }
+
+//    TODO: removed package metric duc to metric deprecation, should check reintegration
+//    for (RubyPackage pack : packageList)
+//    {
+//      sensorContext.saveMeasure(pack, CoreMetrics.PACKAGES, 1.0);
+//    }
   }
 
   @Override

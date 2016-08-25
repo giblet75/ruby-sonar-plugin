@@ -1,5 +1,5 @@
 {
-  "RSpec": {
+  "MiniTest": {
     "coverage": {
       "/path/to/source/srcFile.rb": [
         1,
